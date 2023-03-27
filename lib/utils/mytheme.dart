@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 class Mytheme {
   static const splash = Color(0xFFE81667);
-  static const statusBar = Color(0xFF2E3147);
+  static const statusBar = Color(0xFF000000);
   static const appBarColor = Color(0xFF222539);
   static const greenColor = Color(0xFF2EC492);
   static const orangeColor = Color(0xFFEB8D2F);
   static const greyColor = Color(0xFFF4F4F4);
-  static const blueBorder = Color(0xFF3164CE);
-  static const redBorder = Color(0xFFF14336);
+  static const blueBorder = Color(0xFF032161);
+  static const redBorder = Color(0xFFAC1609);
   static const redLight = Color(0xFFFFF1F0);
   static const blueLight = Color(0xFFF5F9FF);
   static List<Color> redGiftGradientColors = [
     const Color(0xFFFCCAC6).withOpacity(0.3),
-    const Color(0xFFDB5449).withOpacity(0.3),
+    const Color(0xFFDB3224).withOpacity(0.3),
   ];
   static List<Color> greenGiftGradientColors = [
     const Color(0xFF89D980).withOpacity(0.3),

@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final Size _size = MediaQuery.of(context).size;
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
-      backgroundColor: Mytheme.splash,
+      backgroundColor: Mytheme.blueBorder,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const Padding(
                 padding: EdgeInsets.only(top: 30),
                 child: Text(
-                  "Welcome Buddles",
+                  "Welcome To The Experience",
                   style: TextStyle(
                     fontSize: 22,
                     color: Colors.white,
@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       "Login to your account",
                       style: TextStyle(
                         fontSize: 16,
-                        color: Mytheme.splash,
+                        color: Mytheme. blueBorder,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Get.back();
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Mytheme.splash,
+                                primary: Mytheme.blueBorder,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5),
                                 ),
@@ -184,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             passwordController.text.trim());
                       },
                       style: ElevatedButton.styleFrom(
-                          primary: Mytheme.splash,
+                          primary: Mytheme.blueBorder,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           )),

@@ -28,7 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
-      backgroundColor: Mytheme.splash,
+      backgroundColor: Mytheme.blueBorder,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
@@ -58,7 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       "Create your Accoount",
                       style: TextStyle(
                         fontSize: 16,
-                        color: Mytheme.splash,
+                        color: Mytheme.blueBorder,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -144,7 +144,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                          primary: Mytheme.splash,
+                          primary: Mytheme.blueBorder,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           )),

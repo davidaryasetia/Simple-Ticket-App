@@ -1,10 +1,17 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:project_kelompok/controllers/auth_controller.dart';
+import 'package:project_kelompok/controllers/location_controller.dart';
+import 'package:project_kelompok/controllers/shared_pref.dart';
+import 'package:project_kelompok/pages/profile_screen.dart';
+import 'package:project_kelompok/pages/select_location_screen.dart';
 import 'package:project_kelompok/utils/constants.dart';
 import 'package:project_kelompok/utils/custom_slider.dart';
 import 'package:project_kelompok/utils/dummy_data.dart';
@@ -34,6 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
     zoom: 14.4746,
   );
 
+  @override
+  void initState() {
+    SharedPref.getLocation().then((value) => LocationController.instance.setCity(value));
+    super.initState();
+  }
+
 
   static const CameraPosition _kLake = CameraPosition(
       bearing: 192.8334901395799,
@@ -55,7 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
             leading: Padding(
               padding: const EdgeInsets.only(left: 10, top: 10),
               child: GestureDetector(
-                onTap: (){},
+                onTap: (){
+                  Get.to(const ProfileScreen());
+                },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(25),
                   child: CachedNetworkImage(
@@ -67,35 +82,86 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+
             title: Padding(
               padding: const EdgeInsets.only(top: 5.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("David Aryasetia"),
-                DropdownButton<String>(
-                    value: city,
-                    dropdownColor: Mytheme.statusBar,
-                  isDense: true,
-                  icon: Icon(Icons.keyboard_arrow_down, color: Colors.white.withOpacity(0.7)),
-                  items: cities.
-                  map(
-                          (e) => DropdownMenuItem<String>(
-                              value: e,
-                            child: Text(e),
+                children: [
+                  Text(AuthController.instance.user!.displayName ?? "Name"),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => const SelectionLocationScreen());
+                    },
+                    child: Row(
+                      children: [
+                        Obx(
+                              () => Text(
+                            LocationController.instance.city.value,
+                            style: TextStyle(color: Colors.white.withOpacity(0.7), inherit: true, fontSize: 14),
                           ),
-                  )
-                    .toList(),
-                  onChanged: (st){
-                      setState(() {
-                        city = st!;
-                      });
-                  },
-                )
-              ],
+                        ),
+                        Icon(Icons.keyboard_arrow_down, color: Colors.white.withOpacity(0.7)),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
+
+            // title: Padding(
+            //   padding: const EdgeInsets.only(top: 5.0),
+            //   child: Column(
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     Text(
+            //         AuthController.instance.user!.displayName ?? "Name"
+            //     ),
+            //     GestureDetector(
+            //       onTap: (){
+            //         Get.to(()=>SelectionLocationScreen());
+            //       },
+            //       child: Row(
+            //         children: [
+            //           Text("city", style: TextStyle(
+            //               color: Colors.white.withOpacity(0.7), inherit: true, fontSize: 14),),
+            //           Icon(Icons.keyboard_arrow_down, color: Colors.white.withOpacity(0.7)),
+            //         ],
+            //       ),
+            //     )
+
+
+                // DropdownButton<String>(
+                //     value: city,
+                //     dropdownColor: Mytheme.statusBar,
+                //   isDense: true,
+                //   icon: Icon(Icons.keyboard_arrow_down, color: Colors.white.withOpacity(0.7)),
+                //   items: cities.
+                //   map(
+                //           (e) => DropdownMenuItem<String>(
+                //               value: e,
+                //             child: Text(e),
+                //           ),
+                //   )
+                //     .toList(),
+                //   onChanged: (st){
+                //       setState(() {
+                //         city = st!;
+                //       });
+                //   },
+                // ),
+
+
+
+          //     ],
+          //   ),
+          // ),
+
+
+
+
             actions: [
               IconButton(onPressed: (){},
                   icon: SvgPicture.asset("assets/icons/search.svg"),
@@ -177,6 +243,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: GoogleMap(
                     mapType: MapType.normal,
                     initialCameraPosition: _kGooglePlex,
+
+                    gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+                      Factory<OneSequenceGestureRecognizer>(
+                            () => EagerGestureRecognizer(),
+                      )
+                    },
                     onMapCreated: (GoogleMapController controller){
                       // _controller.complete(controller);
                     },

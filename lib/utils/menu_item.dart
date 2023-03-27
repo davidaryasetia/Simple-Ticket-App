@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:project_kelompok/pages/view_all_screen.dart';
 import 'package:project_kelompok/utils/dummy_data.dart';
 
 class MenuItem extends StatelessWidget {
@@ -21,6 +23,7 @@ class MenuItem extends StatelessWidget {
           child: GestureDetector(
             onTap: (){
               print(menus[i].name);
+              Get.to(() => const ViewAllScreen());
             },
             child: Column(
               children: [

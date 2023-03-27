@@ -14,6 +14,12 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState()=> _SplashScreenState();
 }
 
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key : key);
+  @override
+  _SplashScreenState createState()=? _SplashScreenSte();
+}
+
 class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin{
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -43,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     SystemChrome. setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
-      backgroundColor: Mytheme.splash,
+      backgroundColor: Mytheme. blueBorder,
       body: Container(
         child: Center(
           child: ScaleTransition(

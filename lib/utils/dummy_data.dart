@@ -17,37 +17,36 @@ List<MenuModel> menus = [
   MenuModel(name: "Sports", asset: "assets/icons/running.svg"),
   MenuModel(name: "Activity", asset: "assets/icons/flag.svg"),
   MenuModel(name: "Monum", asset: "assets/icons/pyramid.svg"),
-  MenuModel(name: "Monum", asset: "assets/icons/theater_masks.svg"),
 ];
 
 List<MovieModel> movies = [
   MovieModel(
-    title: "Bigil",
+    title: "Top Gun",
     description: "description",
     actors: ["actor a", "actor b"],
-    like: 84,
-    bannerUrl: "assets/movies/movie1.png",
+    like: 96,
+    bannerUrl: "assets/movies/topgun.jpeg",
   ),
   MovieModel(
-    title: "Kaithi",
+    title: "Jumanji",
     description: "description",
     actors: ["actor a", "actor b"],
     like: 84,
-    bannerUrl: "assets/movies/movie2.png",
+    bannerUrl: "assets/movies/jumanjii.jpg",
   ),
   MovieModel(
-    title: "Asuran",
+    title: "Mulan",
     description: "description",
     actors: ["actor a", "actor b"],
-    like: 84,
-    bannerUrl: "assets/movies/movie3.png",
+    like: 90,
+    bannerUrl: "assets/movies/mulan.jpg",
   ),
   MovieModel(
-    title: "Sarkar",
+    title: "Spiderman",
     description: "description",
     actors: ["actor a", "actor b"],
     like: 84,
-    bannerUrl: "assets/movies/movie4.png",
+    bannerUrl: "assets/movies/spiderman.jpg",
   ),
 ];
 
@@ -112,4 +111,9 @@ List<String> cities = [
   "Kolkata",
   "Chennai",
   "Lucknow",
+];
+
+List<String> screens = [
+  "3D",
+  "2D",
 ];
